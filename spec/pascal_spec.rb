@@ -8,7 +8,6 @@ describe Pascal do
         expect(sample.nth_row).to eql("1")
       end
     end
-  end
 
     context "run argument: 1" do
       it "returns first row of pascal triangle" do
@@ -30,6 +29,7 @@ describe Pascal do
         expect(sample.nth_row).to eql("1 9 36 84 126 126 84 36 9 1")
       end
     end
+  end
 
   describe ".draw_pascal_triangle" do
     context 'run with argument:1' do
@@ -38,12 +38,14 @@ describe Pascal do
         expect { sample.draw_pascal_triangle }.to output("1\n").to_stdout
       end
     end
+
     context 'run with argument:3' do
       it 'prints first three rows' do
         sample = Pascal.new(3)
         expect { sample.draw_pascal_triangle }.to output("1\n1 1\n1 2 1\n").to_stdout
       end
     end
+
     context 'run with argument:5' do
       it 'prints first five rows' do
         sample = Pascal.new(5)
