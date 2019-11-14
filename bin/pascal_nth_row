@@ -3,5 +3,5 @@
 require_relative "../lib/pascal"
 
 arg = ARGV
-sample = Pascal.new(arg[0].to_i)
-puts sample.nth_row
+sample = Pascal.new
+puts sample.nth_row(arg[0].to_i)
