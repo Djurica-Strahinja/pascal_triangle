@@ -3,5 +3,5 @@
 require_relative "../lib/pascal"
 
 arg = ARGV
-sample = Pascal.new(arg[0].to_i)
-sample.draw_pascal_triangle
+sample = Pascal.new
+sample.draw_pascal_triangle(arg[0].to_i)
