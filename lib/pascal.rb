@@ -26,8 +26,11 @@ class Pascal
   end
 
   def draw_pascal_triangle(height=1)
+    spaces = " "
+    num_spaces = height
     for row in(1..height)
-      puts nth_row(row)
+      puts "#{spaces*num_spaces}#{nth_row(row)}"
+      num_spaces -=1
     end
   end
 end
