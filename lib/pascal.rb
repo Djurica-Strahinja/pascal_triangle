@@ -1,33 +1,36 @@
-class Pascal_triangle
-  def draw(height=1)
-    spaces = " "
+class PascalTriangle
+  attr_reader :first_row, :second_row, :space
+  def initialize
+    @first_row = [1]
+    @second_row = [1,1]
+    @space = " "
+  end
+  def draw(height)
     num_spaces = height
     for row in (1..height)
-      puts "#{spaces*num_spaces}#{nth_row(row)}"
+      print_row(num_spaces, row)
       num_spaces -= 1
     end
   end
 
   private
-  def next_row(row)
-    new_values = []
-    (row.length - 1).times do |i|
-      new_values << (row[i] + row[i+1])
-    end
-    new_row = [1,1]
-    new_values.each do |num|
-      new_row.insert(1,num)
-    end
-    new_row
+  def print_row(num_spaces, row)
+    puts "#{@space*num_spaces}#{nth_row(row).join(" ")}"
   end
 
-  def nth_row(row_num = 1)
-    row = [1, 1]
-    return "1" if row_num == 1
-    return row.join(" ") if row_num == 2
-    (row_num-2).times do
-      row = next_row(row)
+  def nth_row(row_num)
+    return @first_row  if row_num == 1
+    return @second_row if row_num == 2
+    row = @second_row
+    (row_num - 2).times { row = next_row(row) }
+    row
+  end
+
+  def next_row(row)
+    new_row = [1,1]
+    (row.length - 1).times do |i|
+      new_row.insert(1,(row[i] + row[i+1]))
     end
-    row.join(" ")
+    new_row
   end
 end
