@@ -1,36 +1,35 @@
+class PascalTriangle
+  attr_reader :first_row, :second_row
 
-class Pascal
+  def initialize
+    @first_row = [1]
+    @second_row = [1, 1]
+  end
 
-
-  def nth_row(row_num=1)
-    row = [1,1]
-    new_row= []
-
-    if row_num == 1
-      return "1"
-    elsif row_num == 2
-      return row.join(" ")
-    else
-      (row_num-2).times do
-        new_row = []
-        (row.length-1).times do |i|
-            new_row << (row[i]+row[i+1])
-        end
-        row = [1,1]
-        new_row.each do |num|
-          row.insert(1,num)
-        end
-      end
-      return row.join(" ")
+  def draw(height)
+    max_width = nth_row(height).join(" ").length
+    for row in (1..height)
+      print_row(row, max_width)
     end
   end
 
-  def draw_pascal_triangle(height=1)
-    spaces = " "
-    num_spaces = height
-    for row in(1..height)
-      puts "#{spaces*num_spaces}#{nth_row(row)}"
-      num_spaces -=1
-    end
+  private
+  def print_row(row, max_width)
+    puts (nth_row(row).join(" ")).center(max_width)
+  end
+
+  def nth_row(row_num)
+    return first_row  if row_num == 1
+    return second_row if row_num == 2
+
+    row = second_row
+    (row_num - 2).times { row = next_row(row) }
+    row
+  end
+
+  def next_row(row)
+    new_row = [1, 1]
+    (row.length - 1).times {|i| new_row.insert(1,(row[i] + row[i + 1])) }
+    new_row
   end
 end
