@@ -1,5 +1,5 @@
 class PascalTriangle
-  attr_reader :first_row, :second_row, :space
+  attr_reader :first_row, :second_row
 
   def initialize
     @first_row = [1]
