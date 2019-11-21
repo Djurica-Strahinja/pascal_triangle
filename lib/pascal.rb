@@ -3,7 +3,7 @@ class PascalTriangle
   attr_reader :first_row, :second_row, :space
   def initialize
     @first_row = [1]
-    @second_row = [1,1]
+    @second_row = [1, 1]
     @space = " "
   end
 
