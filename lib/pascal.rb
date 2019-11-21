@@ -1,23 +1,27 @@
 class PascalTriangle
-
   attr_reader :first_row, :second_row, :space
+
   def initialize
     @first_row = [1]
     @second_row = [1, 1]
-    @space = " "
   end
 
   def draw(height)
     max_width = nth_row(height).join(" ").length
     for row in (1..height)
-     puts (nth_row(row).join(" ")).center(max_width)
+     puts print_row(row, max_width)
     end
   end
 
   private
+  def print_row(row, max_width)
+    (nth_row(row).join(" ")).center(max_width)
+  end
+
   def nth_row(row_num)
     return first_row  if row_num == 1
     return second_row if row_num == 2
+
     row = second_row
     (row_num - 2).times { row = next_row(row) }
     row
