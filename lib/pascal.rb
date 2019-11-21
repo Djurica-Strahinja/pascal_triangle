@@ -9,13 +9,13 @@ class PascalTriangle
   def draw(height)
     max_width = nth_row(height).join(" ").length
     for row in (1..height)
-     puts print_row(row, max_width)
+      print_row(row, max_width)
     end
   end
 
   private
   def print_row(row, max_width)
-    (nth_row(row).join(" ")).center(max_width)
+    puts (nth_row(row).join(" ")).center(max_width)
   end
 
   def nth_row(row_num)
